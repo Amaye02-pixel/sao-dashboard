@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAO Ordinal Scale Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Link Start Screen -->
+    <div id="startScreen">
+        <h1>LINK START</h1>
+        <button id="startBtn">Tap to Start</button>
+    </div>
+
+    <!-- Sound Effects -->
+    <audio id="clickSound" src="/sounds/click.mp3" preload="auto"></audio>
+    <audio id="linkStartSound" src="/sounds/linkstart.mp3" preload="auto"></audio>
+
+    <!-- Floating Menu -->
+    <div class="menu-bar">
+        <button onclick="togglePanel()">☰</button>
+        <button onclick="openPanel('inventory')">🎒</button>
+        <button onclick="openPanel('status')">💠</button>
+        <button onclick="openPanel('settings')">⚙</button>
+        <button onclick="openMap()">🗺</button>
+    </div>
+
+    <!-- Center Panel -->
+    <div id="centerPanel" class="panel">
+        <div class="panel-content" id="panelContent">
+            <h3>System Online</h3>
+            <p>Awaiting command input...</p>
+        </div>
+    </div>
+
+    <!-- Google Map Frame -->
+    <div id="mapView" class="map-view">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799068718!2d-74.25987368775945!3d40.69767006360616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York!5e0!3m2!1sen!2sus!4v1696438424309!5m2!1sen!2sus"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <button class="closeMapBtn" onclick="closeMap()">✖</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

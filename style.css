@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    background:
+        radial-gradient(circle at center, rgba(0, 20, 30, 0.6), rgba(0, 0, 0, 0.9)),
+        url("bg.jpg") center/cover no-repeat fixed;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    color: cyan;
+}
+
+
+/* === LINK START SCREEN === */
+#startScreen {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1), rgba(0, 0, 0, 0.9));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 999999;
+    color: cyan;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    transition: opacity 1s ease;
+}
+
+#startScreen h1 {
+    font-size: 4rem;
+    text-shadow: 0 0 15px cyan, 0 0 30px cyan;
+    animation: pulse 1.8s infinite ease-in-out;
+}
+
+#startScreen button {
+    background: none;
+    border: 2px solid cyan;
+    color: cyan;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#startScreen button:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px cyan;
+}
+
+#startScreen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* === FLOATING MENU === */
+.menu-bar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 25px;
+    z-index: 1000;
+}
+
+.menu-bar button {
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: cyan;
+    font-size: 1.6rem;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.menu-bar button:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px cyan;
+}
+
+/* === PANEL === */
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 350px;
+    height: 300px;
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid rgba(0, 255, 255, 0.4);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    z-index: 900;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+}
+
+.panel.active {
+    display: flex;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.panel-content {
+    text-align: center;
+    color: cyan;
+    width: 80%;
+}
+
+/* === MAP VIEW === */
+.map-view {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 800;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.closeMapBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid cyan;
+    color: cyan;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+}
+
+.closeMapBtn:hover {
+    background: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 15px cyan;
+}
+
+/* === SAO CURSOR === */
+.sao-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.5),
+        inset 0 0 10px rgba(0, 255, 255, 0.3);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    animation: cursorPulse 1.2s infinite ease-in-out;
+    backdrop-filter: blur(2px);
+}
+
+@keyframes cursorPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px rgba(0, 255, 255, 0.6),
+            inset 0 0 10px rgba(0, 255, 255, 0.3);
+        opacity: 1;
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.9),
+            inset 0 0 20px rgba(0, 255, 255, 0.4);
+        opacity: 0.7;
+    }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .panel {
+        width: 85%;
+        height: 250px;
+    }
+
+    .menu-bar {
+        gap: 15px;
+    }
+}
